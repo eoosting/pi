@@ -13,3 +13,6 @@ sudo apt-get clean
 pip install psutil
 # someplace I found that this slack client works without throwing errors, without it slack didn't work in python
 pip install slackclient==1.0.5
+
+#edit /etc/rc.local to trigger ipannounce.py on boot like
+(sleep 10;python ~pi/bin/ipannounce.py)&
