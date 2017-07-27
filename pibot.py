@@ -4,6 +4,7 @@ import json
 import psutil
 from slackclient import SlackClient
 
+# lifted from http://blog.benjie.me/building-a-slack-bot-to-talk-with-a-raspberry-pi/
 
 slack_client = SlackClient("XXXXXXXX")
 
