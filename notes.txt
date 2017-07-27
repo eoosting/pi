@@ -1,0 +1,15 @@
+some notes around getting the development env working on pi
+
+http://blog.benjie.me/building-a-slack-bot-to-talk-with-a-raspberry-pi/
+
+sudo apt-get update
+sudo apt-get dist-upgrade
+sudo apt-get upgrade
+# we need to be able to use pip, so tryin installing these
+# from: http://www.isendev.com/app/entry/39
+sudo apt-get install build-essential python-dev python-pip
+sudo apt-get clean
+
+pip install psutil
+# someplace I found that this slack client works without throwing errors, without it slack didn't work in python
+pip install slackclient==1.0.5
