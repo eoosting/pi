@@ -7,6 +7,7 @@ import slackcreds
 
 # lifted from http://blog.benjie.me/building-a-slack-bot-to-talk-with-a-raspberry-pi/
 
+hostname = socket.gethostname()
 slack_client = SlackClient(slackcreds.slackAuth)
 
 
@@ -38,7 +39,7 @@ if slack_client.rtm_connect():
                     slack_client.api_call(
                         "chat.postMessage",
                         channel=message['channel'],
-                        text="My CPU is at %s%%." % cpu_pct,
+                        text="%s: CPU is at %s%%." % (hostname, cpu_pct),
                         as_user=True)
 
                 if re.match(r'.*(memory|ram).*', message_text, re.IGNORECASE):
@@ -48,7 +49,7 @@ if slack_client.rtm_connect():
                     slack_client.api_call(
                         "chat.postMessage",
                         channel=message['channel'],
-                        text="My RAM is at %s%%." % mem_pct,
+                        text="%s: RAM is at %s%%." % (hostname, mem_pct),
                         as_user=True)
 
         time.sleep(1)
