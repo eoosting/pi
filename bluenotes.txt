@@ -19,3 +19,5 @@ wget https://raw.github.com/paulbarber/raspi-gpio/master/inoutboard.py
 # edit it with the bluetooth addr/names
 python inoutboard.py
 
+#look at
+hcitool rssi <bdaddr>
