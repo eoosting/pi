@@ -21,3 +21,9 @@ sudo pip install slackclient==1.0.5
 # https://learn.adafruit.com/adafruit-speaker-bonnet-for-raspberry-pi/raspberry-pi-usage
 curl -sS https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/i2samp.sh | bash
 
+mkdir bin
+cd bin
+curl -sS https://raw.githubusercontent.com/eoosting/pi/notes.txt
+curl -sS https://raw.githubusercontent.com/eoosting/pi/ipannounce.py
+curl -sS https://raw.githubusercontent.com/eoosting/pi/slackcreds.py
+curl -sS https://raw.githubusercontent.com/eoosting/pi/pibot.py
