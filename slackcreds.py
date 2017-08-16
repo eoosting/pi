@@ -1,3 +1,3 @@
 
 slackAuth = "xxx"
-botName = "pibot1"
+botName = "piannounce"
