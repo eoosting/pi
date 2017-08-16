@@ -1,5 +1,8 @@
 some notes around getting the development env working on pi
 
+#set the timezone
+sudo dpkg-reconfigure tzdata
+
 http://blog.benjie.me/building-a-slack-bot-to-talk-with-a-raspberry-pi/
 
 sudo apt-get update
