@@ -23,7 +23,7 @@ curl -sS https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scrip
 
 mkdir bin
 cd bin
-curl -sS https://raw.githubusercontent.com/eoosting/pi/notes.txt
-curl -sS https://raw.githubusercontent.com/eoosting/pi/ipannounce.py
-curl -sS https://raw.githubusercontent.com/eoosting/pi/slackcreds.py
-curl -sS https://raw.githubusercontent.com/eoosting/pi/pibot.py
+curl -O https://raw.githubusercontent.com/eoosting/pi/master/notes.txt
+curl -O https://raw.githubusercontent.com/eoosting/pi/master/ipannounce.py
+#curl -O https://raw.githubusercontent.com/eoosting/pi/master/slackcreds.py
+#curl -O https://raw.githubusercontent.com/eoosting/pi/master/pibot.py
