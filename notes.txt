@@ -28,5 +28,5 @@ mkdir bin
 cd bin
 curl -O https://raw.githubusercontent.com/eoosting/pi/master/notes.txt
 curl -O https://raw.githubusercontent.com/eoosting/pi/master/ipannounce.py
+curl -O https://raw.githubusercontent.com/eoosting/pi/master/pibot.py
 #curl -O https://raw.githubusercontent.com/eoosting/pi/master/slackcreds.py
-#curl -O https://raw.githubusercontent.com/eoosting/pi/master/pibot.py
