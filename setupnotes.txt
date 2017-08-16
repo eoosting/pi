@@ -1,3 +1,4 @@
+setup:
 some notes around getting the development env working on pi
 
 #set the timezone
@@ -13,6 +14,7 @@ sudo apt-get upgrade
 sudo apt-get install build-essential python-dev python-pip
 sudo apt-get clean
 
+
 sudo pip install psutil
 # someplace I found that this slack client works without throwing errors, without it slack didn't work in python
 sudo pip install slackclient==1.0.5
@@ -20,13 +22,11 @@ sudo pip install slackclient==1.0.5
 #edit /etc/rc.local to trigger ipannounce.py on boot like ... put in before exit 0
 (sleep 10;python ~pi/bin/ipannounce.py)&
 
-
-# https://learn.adafruit.com/adafruit-speaker-bonnet-for-raspberry-pi/raspberry-pi-usage
-curl -sS https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/i2samp.sh | bash
-
 mkdir bin
 cd bin
-curl -O https://raw.githubusercontent.com/eoosting/pi/master/notes.txt
+curl -O https://raw.githubusercontent.com/eoosting/pi/master/setupnotes.txt
+curl -O https://raw.githubusercontent.com/eoosting/pi/master/bluenotes.txt
+curl -O https://raw.githubusercontent.com/eoosting/pi/master/audionotes.txt
 curl -O https://raw.githubusercontent.com/eoosting/pi/master/ipannounce.py
 curl -O https://raw.githubusercontent.com/eoosting/pi/master/pibot.py
 #curl -O https://raw.githubusercontent.com/eoosting/pi/master/slackcreds.py
