@@ -42,7 +42,7 @@ if slack_client.rtm_connect():
                         text="%s: CPU is at %s%%." % (hostname, cpu_pct),
                         as_user=True)
 
-                if re.match(r'.*(memory|ram).*', message_text, re.IGNORECASE):
+                if re.match(r'.*(memory|ram|mem).*', message_text, re.IGNORECASE):
                     mem = psutil.virtual_memory()
                     mem_pct = mem.percent
 
