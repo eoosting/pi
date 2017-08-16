@@ -1,1 +1,21 @@
 
+#below not yet tested, but notes to try!
+#from: http://www.instructables.com/id/Raspberry-Pi-Bluetooth-InOut-Board-or-Whos-Hom/
+sudo apt-get install -y bluez
+sudo apt-get install -y python-bluez
+
+# see what bluetooth is local
+hcitool dev
+
+#nearby discoverable devices
+wget https://pybluez.googlecode.com/svn/trunk/examples/simple/inquiry.py
+python inquiry.py
+
+#consider using
+hcitool scan
+
+#in/out board once filled out
+wget https://raw.github.com/paulbarber/raspi-gpio/master/inoutboard.py
+# edit it with the bluetooth addr/names
+python inoutboard.py
+
