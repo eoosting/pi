@@ -3,16 +3,17 @@ import time
 import json
 import psutil
 from slackclient import SlackClient
+import slackcreds
 
 # lifted from http://blog.benjie.me/building-a-slack-bot-to-talk-with-a-raspberry-pi/
 
-slack_client = SlackClient("XXXXXXXX")
+slack_client = SlackClient(slackcreds.slackAuth)
 
 
 # Fetch your Bot's User ID
 user_list = slack_client.api_call("users.list")
 for user in user_list.get('members'):
-    if user.get('name') == "pibot1":
+    if user.get('name') == slackcreds.botName:
         slack_user_id = user.get('id')
         break
 
