@@ -29,4 +29,5 @@ curl -O https://raw.githubusercontent.com/eoosting/pi/master/bluenotes.txt
 curl -O https://raw.githubusercontent.com/eoosting/pi/master/audionotes.txt
 curl -O https://raw.githubusercontent.com/eoosting/pi/master/ipannounce.py
 curl -O https://raw.githubusercontent.com/eoosting/pi/master/pibot.py
+curl -O https://raw.githubusercontent.com/eoosting/pi/master/mqttnotes.txt
 #curl -O https://raw.githubusercontent.com/eoosting/pi/master/slackcreds.py
