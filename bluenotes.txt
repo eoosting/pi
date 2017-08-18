@@ -1,5 +1,6 @@
 
 #below not yet tested, but notes to try!
+#https://www.systutorials.com/docs/linux/man/1-hcitool/
 #from: http://www.instructables.com/id/Raspberry-Pi-Bluetooth-InOut-Board-or-Whos-Hom/
 sudo apt-get install -y bluez
 sudo apt-get install -y python-bluez
