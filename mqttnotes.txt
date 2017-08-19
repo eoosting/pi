@@ -1,6 +1,12 @@
 
 
-# this may be more for setting up the pi as a mqqt server but look at:
-#https://learn.adafruit.com/diy-esp8266-home-security-with-lua-and-mqtt/configuring-mqtt-on-the-raspberry-pi
+#this may be more for setting up the pi as a mqqt server but look at:
+# https://learn.adafruit.com/diy-esp8266-home-security-with-lua-and-mqtt/configuring-mqtt-on-the-raspberry-pi
 sudo apt-get install mosquitto mosquitto-clients python-mosquitto
 
+#from
+# http://www.steves-internet-guide.com/into-mqtt-python-client/
+pip install paho-mqtt
+
+# from
+# http://www.steves-internet-guide.com/publishing-messages-mqtt-client/
