@@ -1,6 +1,8 @@
 setup:
 some notes around getting the development env working on pi
 
+sudo vi /etc/hostname
+
 #set the timezone
 sudo dpkg-reconfigure tzdata
 
