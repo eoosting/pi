@@ -7,6 +7,7 @@ sudo dpkg-reconfigure tzdata
 http://blog.benjie.me/building-a-slack-bot-to-talk-with-a-raspberry-pi/
 
 sudo apt-get update
+sudo apt-get upgrade
 sudo apt-get dist-upgrade
 sudo apt-get upgrade
 # we need to be able to use pip, so tryin installing these
