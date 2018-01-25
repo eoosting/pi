@@ -1,11 +1,11 @@
 setup:
 some notes around getting the development env working on pi
 
-on setting up the first time:
-Add the line "lcd_rotate=2" to the top of /boot/config.txt
+on setting up the first time, take care of some stuff on the /boot partition:
+Add the line "lcd_rotate=2" adn "disable_overscan=1" to the top of /boot/config.txt
 add empty ssh file to /boot
 
-devzeroasaservice:~ eoosting$ cat pitouch/wpa_supplicant.conf
+devzeroasaservice:~ eoosting$ cat wpa_supplicant.conf
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 country=US
@@ -15,6 +15,8 @@ network={
 	psk="********"
 	key_mgmt=WPA-PSK
 }
+
+Now that it's booted:
 
 sudo vi /etc/hostname
 
