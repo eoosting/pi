@@ -1,6 +1,21 @@
 setup:
 some notes around getting the development env working on pi
 
+on setting up the first time:
+Add the line "lcd_rotate=2" to the top of /boot/config.txt
+add empty ssh file to /boot
+
+devzeroasaservice:~ eoosting$ cat pitouch/wpa_supplicant.conf
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=US
+
+network={
+	ssid="aerial"
+	psk="********"
+	key_mgmt=WPA-PSK
+}
+
 sudo vi /etc/hostname
 
 #set the timezone
@@ -26,6 +41,10 @@ sudo pip install slackclient==1.0.5
 
 #edit /etc/rc.local to trigger ipannounce.py on boot like ... put in before exit 0
 (sleep 10;python ~pi/bin/ipannounce.py)&
+
+or:
+#(sleep 10;python ~pi/bin/ipannounce.py)&
+(sleep 20;python ~pi/bin/pibot.py)&
 
 mkdir bin
 cd bin
