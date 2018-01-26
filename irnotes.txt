@@ -1,0 +1,63 @@
+
+
+
+###### this below was the notes on the pi0-2 that never worked really, so time to try it on the pi3
+
+
+# http://www.raspberry-pi-geek.com/Archive/2015/10/Raspberry-Pi-IR-remote
+sudo apt-get install lirc
+
+# github notes on setup:
+# https://gist.github.com/prasanthj/c15a5298eb682bde34961c322c95378b
+
+# Add the following lines to /etc/modules file
+lirc_dev
+lirc_rpi gpio_in_pin=18 gpio_out_pin=17
+
+# Add the following lines to /etc/lirc/hardware.conf file
+LIRCD_ARGS="--uinput --listen"
+LOAD_MODULES=true
+DRIVER="default"
+DEVICE="/dev/lirc0"
+MODULES="lirc_rpi"
+
+
+# Update the following line in /boot/config.txt
+dtoverlay=lirc-rpi,gpio_in_pin=18,gpio_out_pin=17
+
+# Update the following lines in /etc/lirc/lirc_options.conf
+driver    = default
+device    = /dev/lirc0
+
+$ sudo /etc/init.d/lircd stop
+$ sudo /etc/init.d/lircd start
+
+# Check status to make lirc is running
+$ sudo /etc/init.d/lircd status
+
+# Reboot before testing
+$ reboot
+
+
+
+old directions that don't appear to work
+________________________________________________
+Add this to /etc/modules:
+lirc_dev
+lirc_rpi gpio_out_pin=22
+
+
+Add this to /etc/lirc/hardware.conf
+LIRCD_ARGS="--uinput"
+LOAD_MODULES=true
+DRIVER="default"
+DEVICE="/dev/lirc0"
+MODULES="lirc_rpi"
+LIRCD_CONF=""
+LIRCMD_CONF=""
+
+Then reboot
+
+
+troubleshooting:
+https://raspberrypi.stackexchange.com/questions/50873/lirc-wont-transmit-irsend-hardware-does-not-support-sending
