@@ -1,0 +1,13 @@
+git config --global user.email "eoosting@users.noreply.github.com"
+git config --global user.name "Eric Oosting"
+mkdir pi-repo
+cd pi-repo/
+git clone https://github.com/eoosting/pi.git
+cd pi
+git status
+touch gitnotes.txt
+git add gitnotes.txt
+git status
+git commit -m "adding gitnotes.txt to commit"
+git status
+git push
