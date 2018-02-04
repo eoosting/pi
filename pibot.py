@@ -38,7 +38,7 @@ if slack_client.rtm_connect():
     slack_client.api_call(
         "chat.postMessage",
         channel="pibot_announce",
-        text="pibot.py startup ... %s reporting in at %s" % (hostname, ipaddr),
+        text="pibot.py %s startup ... %s reporting in at %s" % (pibotVersion, hostname, ipaddr),
         as_user=True
     )
 
