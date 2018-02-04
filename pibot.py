@@ -6,7 +6,21 @@ import socket
 from slackclient import SlackClient
 import slackcreds
 
-pibotVersion = "v1.0"
+pibotVersion = "v1.1"
+
+issueFile = open("/etc/rpi-issue","r")
+issueLines = []
+for line in issueFile:
+    issueLines.append(line)
+systemIssue = issueLines[0].rstrip()
+issueFile.close()
+
+releaseFile = open("/etc/os-release","r")
+releaseLines = []
+for line in releaseFile:
+    releaseLines.append(line)
+systemVersion = releaseLines[0].rstrip()
+releaseFile.close()
 
 # from http://blog.benjie.me/building-a-slack-bot-to-talk-with-a-raspberry-pi/
 
@@ -71,6 +85,14 @@ if slack_client.rtm_connect():
                         text="%s: RAM is at %s%%." % (hostname, mem_pct),
                         as_user=True)
 
+                if re.match(r'.*(version|ver).*', message_text, re.IGNORECASE):
+
+                    slack_client.api_call(
+                        "chat.postMessage",
+                        channel=message['channel'],
+                        text="%s: pibot.py %s running on %s issue %s%." % (hostname, pibotVersion, systemVersion, systemIssue),
+                        as_user=True)
+
                 if re.match(hostregexp, message_text, re.IGNORECASE):
                     cpu_pct = psutil.cpu_percent(interval=1, percpu=False)
                     mem = psutil.virtual_memory()
@@ -79,7 +101,7 @@ if slack_client.rtm_connect():
                     slack_client.api_call(
                         "chat.postMessage",
                         channel=message['channel'],
-                        text="%s: RAM is at %s%% and CPU is at %s%%." % (hostname, mem_pct, cpu_pct),
+			text="%s: pibot.py %s RAM %s%% CPU %s%%." % (hostname, pibotVersion, mem_pct, cpu_pct),
                         as_user=True)
 
         time.sleep(1)

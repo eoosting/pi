@@ -57,5 +57,6 @@ curl -O https://raw.githubusercontent.com/eoosting/pi/master/ipannounce.py
 curl -O https://raw.githubusercontent.com/eoosting/pi/master/pibot.py
 curl -O https://raw.githubusercontent.com/eoosting/pi/master/mqttnotes.txt
 curl -O https://raw.githubusercontent.com/eoosting/pi/master/irnotes.txt
+curl -O https://raw.githubusercontent.com/eoosting/pi/master/gitnotes.txt
 #curl -O https://raw.githubusercontent.com/eoosting/pi/master/slackcreds.py
 
