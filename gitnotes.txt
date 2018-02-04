@@ -11,3 +11,6 @@ git status
 git commit -m "adding gitnotes.txt to commit"
 git status
 git push
+vi pibot.py
+git commit -a -m "update to pibot to support ver"
+
