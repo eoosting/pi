@@ -6,6 +6,8 @@ import socket
 from slackclient import SlackClient
 import slackcreds
 
+pibotVersion = "v1.0"
+
 # from http://blog.benjie.me/building-a-slack-bot-to-talk-with-a-raspberry-pi/
 
 # get the ip address in a string
@@ -31,7 +33,7 @@ for user in user_list.get('members'):
 
 # Start connection
 if slack_client.rtm_connect():
-    print "ipannounce.py connected to slack! %s w/ hostname %s" % (slack_user_id, hostname)
+    print "pibot.py %s connected to slack! %s w/ hostname %s" % (pibotVersion, slack_user_id, hostname)
 
     slack_client.api_call(
         "chat.postMessage",
