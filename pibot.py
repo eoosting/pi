@@ -90,7 +90,7 @@ if slack_client.rtm_connect():
                     slack_client.api_call(
                         "chat.postMessage",
                         channel=message['channel'],
-                        text="%s: pibot.py %s running on %s issue %s%." % (hostname, pibotVersion, systemVersion, systemIssue),
+                        text="%s: pibot.py %s running on %s issue %s." % (hostname, pibotVersion, systemVersion, systemIssue),
                         as_user=True)
 
                 if re.match(hostregexp, message_text, re.IGNORECASE):
