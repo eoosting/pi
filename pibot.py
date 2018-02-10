@@ -5,8 +5,10 @@ import psutil
 import socket
 from slackclient import SlackClient
 import slackcreds
+#from subprocess import call
+import os
 
-pibotVersion = "v1.1"
+pibotVersion = "v1.2.2"
 
 issueFile = open("/etc/rpi-issue","r")
 issueLines = []
@@ -92,6 +94,34 @@ if slack_client.rtm_connect():
                         channel=message['channel'],
                         text="%s: pibot.py %s running on %s issue %s." % (hostname, pibotVersion, systemVersion, systemIssue),
                         as_user=True)
+
+                if re.match(r'.*(gitupdate).*', message_text, re.IGNORECASE):
+
+                    slack_client.api_call(
+                        "chat.postMessage",
+                        channel=message['channel'],
+                        text="%s: ack." % (hostname),
+                        as_user=True)
+                    os.system('/bin/bash /home/pi/bin/getgit.sh')
+
+                if re.match(r'.*(procrestart).*', message_text, re.IGNORECASE):
+
+                    slack_client.api_call(
+                        "chat.postMessage",
+                        channel=message['channel'],
+                        text="%s: ack." % (hostname),
+                        as_user=True)
+                    os.system('sudo pkill -f \'python /home/pi/bin/pibot.py\'')
+
+                if re.match(r'.*(osrestart).*', message_text, re.IGNORECASE):
+
+                    slack_client.api_call(
+                        "chat.postMessage",
+                        channel=message['channel'],
+                        text="%s: ack." % (hostname),
+                        as_user=True)
+		    os.system('sudo shutdown -r now')
+
 
                 if re.match(hostregexp, message_text, re.IGNORECASE):
                     cpu_pct = psutil.cpu_percent(interval=1, percpu=False)
