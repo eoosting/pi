@@ -8,7 +8,7 @@ import slackcreds
 #from subprocess import call
 import os
 
-pibotVersion = "v1.2.2"
+pibotVersion = "v1.2.3"
 
 issueFile = open("/etc/rpi-issue","r")
 issueLines = []
@@ -75,6 +75,17 @@ if slack_client.rtm_connect():
                         "chat.postMessage",
                         channel=message['channel'],
                         text="%s: CPU is at %s%%." % (hostname, cpu_pct),
+                        as_user=True)
+
+		if re.match(r'.*(help).*', message_text, re.IGNORECASE):
+                    slack_client.api_call(
+                        "chat.postMessage",
+                        channel=message['channel'],
+                        text="%s: usage:\n\
+<hostname>: version, ram amd cpu for the named host\n\
+cpu: have all listeners report on cpu\n\
+mem: have all listeners report on memory\n\
+ver: have all listeners report on pibot version and raspbian version" % (hostname),
                         as_user=True)
 
                 if re.match(r'.*(memory|ram|mem).*', message_text, re.IGNORECASE):
