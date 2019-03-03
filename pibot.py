@@ -7,9 +7,9 @@ from slackclient import SlackClient
 import slackcreds
 import subprocess
 #from subprocess import call
-import os
+#import os
 
-pibotVersion = "v1.3.0-alpha"
+pibotVersion = "v1.3.0-alpha1"
 
 issueFile = open("/etc/rpi-issue","r")
 issueLines = []
@@ -52,96 +52,34 @@ for user in user_list.get('members'):
 if slack_client.rtm_connect():
 	print "pibot.py %s connected to slack! %s w/ hostname %s" % (pibotVersion, slack_user_id, hostname)
 
-	slack_client.api_call(
-		"chat.postMessage",
-		channel="pibot_announce",
-		text="pibot.py %s startup ... %s reporting in at %s" % (pibotVersion, hostname, ipaddr),
-		as_user=True
-	)
+	# slack_client.api_call(
+	# 	"chat.postMessage",
+	# 	channel="pibot_announce",
+	# 	text="pibot.py %s startup ... %s reporting in at %s" % (pibotVersion, hostname, ipaddr),
+	# 	as_user=True
+	# )
 
 	while True:
 		for message in slack_client.rtm_read():
-			if 'text' in message and message['text'].startswith("<@%s>" % slack_user_id):
+			if message['type'].startswith("Hello"):
+				print "Hello message received: %s" % json.dumps(message, indent=2)
+			elif 'text' in message and message['text'].startswith("<@%s>" % slack_user_id):
 				print "Message received: %s" % json.dumps(message, indent=2)
 				message_text = message['text'].\
 					split("<@%s>" % slack_user_id)[1].\
 					strip()
+			elif 'text' in message and not message['text'].startswith("<@%s>" % slack_user_id):
+				print "Non Directed Message received: %s" % json.dumps(message, indent=2)
+				if message['text'].startswith("bot"):
+					message_text = message['text'].\
+						split("bot")[1].\
+						strip()
+			elif message['type'].startswith("user_typing"):
+				print "Typing message received: %s" % json.dumps(message, indent=2)
+			else:
+				print "Non Text Message received: %s" % json.dumps(message, indent=2)
 
-				if re.match(r'.*(cpu).*', message_text, re.IGNORECASE):
-					cpu_pct = psutil.cpu_percent(interval=1, percpu=False)
-					slack_client.api_call(
-						"chat.postMessage",
-						channel=message['channel'],
-						text="%s: CPU is at %s%%." % (hostname, cpu_pct),
-						as_user=True)
 
-				if re.match(r'.*(help).*', message_text, re.IGNORECASE):
-					slack_client.api_call(
-						"chat.postMessage",
-						channel=message['channel'],
-						text="%s: usage:\n\
-<hostname>: version, ram amd cpu for the named host\n\
-cpu: have all listeners report on cpu\n\
-mem: have all listeners report on memory\n\
-ver: have all listeners report on pibot version and raspbian version" % (hostname),
-						as_user=True)
-
-				if re.match(r'.*(memory|ram|mem).*', message_text, re.IGNORECASE):
-					mem = psutil.virtual_memory()
-					mem_pct = mem.percent
-					slack_client.api_call(
-						"chat.postMessage",
-						channel=message['channel'],
-						text="%s: RAM is at %s%%." % (hostname, mem_pct),
-						as_user=True)
-
-				if re.match(r'.*(version|ver).*', message_text, re.IGNORECASE):
-					slack_client.api_call(
-						"chat.postMessage",
-						channel=message['channel'],
-						text="%s: pibot.py %s running on %s issue %s." % (hostname, pibotVersion, systemVersion, systemIssue),
-						as_user=True)
-
-				if re.match(r'.*(gitupdate).*', message_text, re.IGNORECASE):
-					slack_client.api_call(
-						"chat.postMessage",
-						channel=message['channel'],
-						text="%s: ack." % (hostname),
-						as_user=True)
-					subprocess.check_output(["/home/pi/bin/getgit.sh"])
-					subprocess.check_output(["/home/pi/bin/getgit.sh"])
-					slack_client.api_call(
-						"chat.postMessage",
-						channel=message['channel'],
-						text="%s: update done." % (hostname),
-						as_user=True)
-				
-				if re.match(r'.*(procrestart).*', message_text, re.IGNORECASE):
-					slack_client.api_call(
-						"chat.postMessage",
-						channel=message['channel'],
-						text="%s: ack." % (hostname),
-						as_user=True)
-					os.system('sudo pkill -f \'python /home/pi/bin/pibot.py\'')
-
-				if re.match(r'.*(osrestart).*', message_text, re.IGNORECASE):
-
-					slack_client.api_call(
-						"chat.postMessage",
-						channel=message['channel'],
-						text="%s: ack." % (hostname),
-						as_user=True)
-					os.system('sudo shutdown -r now')
-
-				if re.match(hostregexp, message_text, re.IGNORECASE):
-					cpu_pct = psutil.cpu_percent(interval=1, percpu=False)
-					mem = psutil.virtual_memory()
-					mem_pct = mem.percent
-
-					slack_client.api_call(
-						"chat.postMessage",
-						channel=message['channel'],
-						text="%s: pibot.py %s RAM %s%% CPU %s%%." % (hostname, pibotVersion, mem_pct, cpu_pct),
-						as_user=True)
-
-		time.sleep(1)
+	time.sleep(1)
+else:
+	print "error: pibot.py %s can not connect to slack! %s w/ hostname %s" % (pibotVersion, slack_user_id, hostname)
