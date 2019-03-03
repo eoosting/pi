@@ -5,10 +5,11 @@ import psutil
 import socket
 from slackclient import SlackClient
 import slackcreds
+import subprocess
 #from subprocess import call
 import os
 
-pibotVersion = "v1.2.3"
+pibotVersion = "v1.3.0-alpha"
 
 issueFile = open("/etc/rpi-issue","r")
 issueLines = []
@@ -113,7 +114,16 @@ ver: have all listeners report on pibot version and raspbian version" % (hostnam
                         channel=message['channel'],
                         text="%s: ack." % (hostname),
                         as_user=True)
-                    os.system('/bin/bash /home/pi/bin/getgit.sh')
+		
+                    subprocess.check_output(["/home/pi/bin/getgit.sh"])
+		    subprocess.check_output(["/home/pi/bin/getgit.sh"])
+
+		    slack_client.api_call(
+                        "chat.postMessage",
+                        channel=message['channel'],
+                        text="%s: update done." % (hostname),
+                        as_user=True)
+			
 
                 if re.match(r'.*(procrestart).*', message_text, re.IGNORECASE):
 
