@@ -8,8 +8,11 @@ curl -O https://raw.githubusercontent.com/eoosting/pi/master/pibot.py
 curl -O https://raw.githubusercontent.com/eoosting/pi/master/mqttnotes.txt
 curl -O https://raw.githubusercontent.com/eoosting/pi/master/irnotes.txt
 curl -O https://raw.githubusercontent.com/eoosting/pi/master/gitnotes.txt
+
 curl -O https://raw.githubusercontent.com/eoosting/pi/master/getgit.sh
-curl -O https://raw.githubusercontent.com/eoosting/pi/master/rpi-hdmi.sh
 chown pi:pi getgit.sh
 chmod ugo+rx getgit.sh
+
+curl -O https://raw.githubusercontent.com/eoosting/pi/master/rpi-hdmi.sh
+chown pi:pi rpi-hdmi.sh
 chmod ugo+rx rpi-hdmi.sh
