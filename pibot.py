@@ -74,7 +74,7 @@ if slack_client.rtm_connect():
                     slack_client.api_call(
                         "chat.postMessage",
                         channel=message['channel'],
-                        text="%s: CPUq is at %s%%." % (hostname, cpu_pct),
+                        text="%s: CPU is at %s%%." % (hostname, cpu_pct),
                         as_user=True)
 
 		if re.match(r'.*(help).*', message_text, re.IGNORECASE):
