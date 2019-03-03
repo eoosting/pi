@@ -62,23 +62,20 @@ if slack_client.rtm_connect():
 	while True:
 		for message in slack_client.rtm_read():
 			if 'text' in message and message['text'].startswith("<@%s>" % slack_user_id):
-
 				print "Message received: %s" % json.dumps(message, indent=2)
-
 				message_text = message['text'].\
 					split("<@%s>" % slack_user_id)[1].\
 					strip()
 
 				if re.match(r'.*(cpu).*', message_text, re.IGNORECASE):
 					cpu_pct = psutil.cpu_percent(interval=1, percpu=False)
-
 					slack_client.api_call(
 						"chat.postMessage",
 						channel=message['channel'],
 						text="%s: CPU is at %s%%." % (hostname, cpu_pct),
 						as_user=True)
 
-		if re.match(r'.*(help).*', message_text, re.IGNORECASE):
+				if re.match(r'.*(help).*', message_text, re.IGNORECASE):
 					slack_client.api_call(
 						"chat.postMessage",
 						channel=message['channel'],
@@ -92,7 +89,6 @@ ver: have all listeners report on pibot version and raspbian version" % (hostnam
 				if re.match(r'.*(memory|ram|mem).*', message_text, re.IGNORECASE):
 					mem = psutil.virtual_memory()
 					mem_pct = mem.percent
-
 					slack_client.api_call(
 						"chat.postMessage",
 						channel=message['channel'],
@@ -100,7 +96,6 @@ ver: have all listeners report on pibot version and raspbian version" % (hostnam
 						as_user=True)
 
 				if re.match(r'.*(version|ver).*', message_text, re.IGNORECASE):
-
 					slack_client.api_call(
 						"chat.postMessage",
 						channel=message['channel'],
@@ -108,25 +103,20 @@ ver: have all listeners report on pibot version and raspbian version" % (hostnam
 						as_user=True)
 
 				if re.match(r'.*(gitupdate).*', message_text, re.IGNORECASE):
-
 					slack_client.api_call(
 						"chat.postMessage",
 						channel=message['channel'],
 						text="%s: ack." % (hostname),
 						as_user=True)
-		
 					subprocess.check_output(["/home/pi/bin/getgit.sh"])
-			subprocess.check_output(["/home/pi/bin/getgit.sh"])
-
-			slack_client.api_call(
+					subprocess.check_output(["/home/pi/bin/getgit.sh"])
+					slack_client.api_call(
 						"chat.postMessage",
 						channel=message['channel'],
 						text="%s: update done." % (hostname),
 						as_user=True)
-			
-
+				
 				if re.match(r'.*(procrestart).*', message_text, re.IGNORECASE):
-
 					slack_client.api_call(
 						"chat.postMessage",
 						channel=message['channel'],
@@ -141,8 +131,7 @@ ver: have all listeners report on pibot version and raspbian version" % (hostnam
 						channel=message['channel'],
 						text="%s: ack." % (hostname),
 						as_user=True)
-			os.system('sudo shutdown -r now')
-
+					os.system('sudo shutdown -r now')
 
 				if re.match(hostregexp, message_text, re.IGNORECASE):
 					cpu_pct = psutil.cpu_percent(interval=1, percpu=False)
@@ -152,7 +141,7 @@ ver: have all listeners report on pibot version and raspbian version" % (hostnam
 					slack_client.api_call(
 						"chat.postMessage",
 						channel=message['channel'],
-			text="%s: pibot.py %s RAM %s%% CPU %s%%." % (hostname, pibotVersion, mem_pct, cpu_pct),
+						text="%s: pibot.py %s RAM %s%% CPU %s%%." % (hostname, pibotVersion, mem_pct, cpu_pct),
 						as_user=True)
 
 		time.sleep(1)
