@@ -81,7 +81,7 @@ if slack_client.rtm_connect():
                     slack_client.api_call(
                         "chat.postMessage",
                         channel=message['channel'],
-                        text="%s: usage:\n<hostname>: version, ram amd cpu for the names host\ncpu: have all listeners report on cpu\nmem: have all listeners report on memory\nver: have all listeners report on pibot version and raspbian version" % (hostname),
+                        text="%s: usage:\n<hostname>: version, ram amd cpu for the named host\ncpu: have all listeners report on cpu\nmem: have all listeners report on memory\nver: have all listeners report on pibot version and raspbian version" % (hostname),
                         as_user=True)
 
                 if re.match(r'.*(memory|ram|mem).*', message_text, re.IGNORECASE):
