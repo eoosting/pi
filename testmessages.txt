@@ -1,0 +1,153 @@
+Message: {
+  "type": "hello"
+}
+Message: {
+  "event_ts": "1552249780.000100",
+  "text": "pibot.py v1.3.0-alpha1 startup ... pi3-bot1 reporting in at 192.168.86.xx",
+  "ts": "1552249780.000100",
+  "user": "U6I39RT1C",
+  "team": "T6DJ9GXFA",
+  "type": "message",
+  "channel": "U9PNT67R0",
+  "bot_id": "B6P9DU31T"
+}
+Message: {
+  "client_msg_id": "7E9E487D-0A18-4CD0-A28D-E7903074D600",
+  "event_ts": "1552250013.000300",
+  "text": "Hello",
+  "ts": "1552250013.000300",
+  "user": "U9LNT8IBH",
+  "team": "T6DJ9GXFA",
+  "type": "message",
+  "channel": "U9PNT67R0"
+}
+Message: {
+  "client_msg_id": "9839B90E-AF80-491F-8C7F-6E47307A7936",
+  "event_ts": "1552250023.000600",
+  "text": "Pibot ",
+  "ts": "1552250023.000600",
+  "user": "U9LNT8IBH",
+  "team": "T6DJ9GXFA",
+  "type": "message",
+  "channel": "U9PNT67R0"
+}
+Message: {
+  "type": "user_typing",
+  "user": "U9LNT8IBH",
+  "channel": "U9PNT67R0"
+}
+Message: {
+  "client_msg_id": "B4CA4DBF-5CAB-41E2-B1AE-A013BC758791",
+  "event_ts": "1552250033.000800",
+  "text": "<@U6I39RT1C> hello",
+  "ts": "1552250033.000800",
+  "user": "U9LNT8IBH",
+  "team": "T6DJ9GXFA",
+  "type": "message",
+  "channel": "U9PNT67R0"
+}
+Message: {
+  "launchUri": "slack://chanGXFA",
+  "subtitle": "#pibot_announce",
+  "is_shared": false,
+  "title": "Team Blah",
+  "ssbFilename": "knock_brush.mp3",
+  "avatarImage": "https://secure.gravcom/tars%2Fava_0001-192.png",
+  "ts": "155220033.000800",
+  "imageUri": null,
+  "content": "eoosting: @piannounce hello",
+  "event_ts": "155250033.00000",
+  "msg": "155250033.00800",
+  "type": "desktop_notification",
+  "channel": "U9PNT67R0"
+}
+Message: {
+  "type": "user_typing",
+  "user": "U9LNT8IBH",
+  "channel": "U9PNT67R0"
+}
+Message: {
+  "type": "user_typing",
+  "user": "U9LNT8IBH",
+  "channel": "U9PNT67R0"
+}
+Message: {
+  "client_msg_id": "19445692-D098-4B2B-988D-437AAAAD6181",
+  "event_ts": "1552250096.001100",
+  "text": "<@U6I39RT1C> pi3-bot1",
+  "ts": "1552250096.001100",
+  "user": "U9LNT8IBH",
+  "team": "T6DJ9GXFA",
+  "type": "message",
+  "channel": "U9PNT67R0"
+}
+Message: {
+  "type": "user_typing",
+  "user": "U9LNT8IBH",
+  "channel": "U9PNT67R0"
+}
+Message: {
+  "client_msg_id": "42CD7959-7435-427B-BCF3-400B3043AC94",
+  "event_ts": "1552250113.001600",
+  "text": "<@U6I39RT1C> pi3-bot1 ver",
+  "ts": "1552250113.001600",
+  "user": "U9LNT8IBH",
+  "team": "T6DJ9GXFA",
+  "type": "message",
+  "channel": "U9PNT67R0"
+}
+Message: {
+  "client_msg_id": "FD4D140D-1551-40FD-B149-4F36224E9229",
+  "event_ts": "1552250144.002000",
+  "text": "pi3-bot1",
+  "ts": "1552250144.002000",
+  "user": "U9LNT8IBH",
+  "team": "T6DJ9GXFA",
+  "type": "message",
+  "channel": "U9PNT67R0"
+}
+Message: {
+  "type": "user_typing",
+  "user": "U9LNT8IBH",
+  "channel": "U9PNT67R0"
+}
+Message: {
+  "client_msg_id": "FF614810-AD19-4169-BB67-98B828E1CDFE",
+  "event_ts": "1552250158.002400",
+  "text": "pi3-bot1 ver",
+  "ts": "1552250158.002400",
+  "user": "U9LNT8IBH",
+  "team": "T6DJ9GXFA",
+  "type": "message",
+  "channel": "U9PNT67R0"
+}
+Message: {
+  "type": "user_typing",
+  "user": "U9LNT8IBH",
+  "channel": "U9PNT67R0"
+}
+Message: {
+  "client_msg_id": "87852402-79ED-4EF2-8577-F2CA9685C1C3",
+  "event_ts": "1552250166.002700",
+  "text": "ver",
+  "ts": "1552250166.002700",
+  "user": "U9LNT8IBH",
+  "team": "T6DJ9GXFA",
+  "type": "message",
+  "channel": "U9PNT67R0"
+}
+Message: {
+  "type": "user_typing",
+  "user": "U9LNT8IBH",
+  "channel": "U9PNT67R0"
+}
+Message: {
+  "client_msg_id": "11FCF16B-9EA2-402B-983D-D8F6A81A13D0",
+  "event_ts": "1552250174.002900",
+  "text": "Help",
+  "ts": "1552250174.002900",
+  "user": "U9LNT8IBH",
+  "team": "T6DJ9GXFA",
+  "type": "message",
+  "channel": "U9PNT67R0"
+}
