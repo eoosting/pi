@@ -201,7 +201,6 @@ if slack_client.rtm_connect():
 			else:
 				print "Non Text Message received: %s" % json.dumps(message, indent=2)
 
-
 	time.sleep(1)
 
 else:
